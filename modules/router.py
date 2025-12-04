@@ -4,8 +4,8 @@ from .scheme import SBSIn, SBSOut
 from SBS import SBS
 
 sbs = SBS(
-    LogisticRegression,
-    5
+    LogisticRegression(),
+    3
 )
 
 modules_router = APIRouter()
@@ -22,6 +22,6 @@ async def model_fit(sbs_scheme: SBSIn) -> SBSOut:
     sbs_scheme = SBSOut(
         X=sbs_scheme.X[:, indices].tolist(),
         y=sbs_scheme.y.tolist(),
-        indices=indices.tolist()
+        indices=indices
     )
     return sbs_scheme
